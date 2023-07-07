@@ -126,7 +126,38 @@ This service is the core of this app, which handles the format checking and reso
   # Server should be running at port 3000
 ```
 
-> Note: Aside from the default rails 7 api only gems, money-rails, rubocop, and rspec are included in the Gemfile. 
+> Note: Aside from the default rails 7 api only gems, money-rails, rubocop, factory_bot, and rspec are included in the Gemfile. 
+
+**Adding New Payload Formats**
+
+```ruby
+
+# You can create new payload formats by creating in the console. A sample can be seen in the seeds file.
+
+FactoryBot.create(
+  :payload_format,
+  provider: "Payload #1",
+  schema: {
+    reservation_code: 'reservation.code',
+    start_date: 'reservation.start_date',
+    end_date: 'reservation.end_date',
+    nights: 'reservation.nights_count',
+    guests: 'reservation.total_guests_count',
+    adults: 'reservation.adults_count',
+    children: 'reservation.children_count',
+    infants: 'reservation.infants_count',
+    status: 'reservation.status',
+    'guest.first_name': 'guest.first_name',
+    'guest.last_name': 'guest.last_name',
+    'guest.phone': 'guest.phone_numbers',
+    'guest.email': 'guest.email',
+    currency: 'reservation.host_currency',
+    payout_price: 'reservation.payout_price',
+    security_price: 'reservation.security_price',
+    total_price: 'reservation.total_price'
+  }
+)
+```
 ---
 
 # API Documentation
