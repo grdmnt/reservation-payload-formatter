@@ -71,24 +71,24 @@ This service is the core of this app, which handles the format checking and reso
 #### Samples:
 **Payload #1**
 ```
-	{
+  {
     "reservation_code": "reservation.code",
     "start_date": "reservation.start_date",
     "end_date": "reservation.end_at",
     "nights": "reservation.nights_count",
-	  "guests": "reservation.total_guests_count",
-	  "adults": "reservation.adults_count",
-	  "children": "reservation.children_count",
-	  "infants": "reservation.infants_count",
-	  "status": "reservation.status",
-	  "guest.first_name": "guest.first_name",
-	  "guest.last_name": "guest.last_name",
-	  "guest.phone": "guest.phone_numbers[]",
-	  "guest.email": "guest.email"
-	  "currency": "reservation.host_currency",
-	  "payout_price": "reservation.payout_price"
-	  "security_price": "reservation.security_price",
-	  "total_price": "reservation.total_price"
+    "guests": "reservation.total_guests_count",
+    "adults": "reservation.adults_count",
+    "children": "reservation.children_count",
+    "infants": "reservation.infants_count",
+    "status": "reservation.status",
+    "guest.first_name": "guest.first_name",
+    "guest.last_name": "guest.last_name",
+    "guest.phone": "guest.phone_numbers[]",
+    "guest.email": "guest.email"
+    "currency": "reservation.host_currency",
+    "payout_price": "reservation.payout_price"
+    "security_price": "reservation.security_price",
+    "total_price": "reservation.total_price"
   }
 ```
 
