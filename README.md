@@ -7,12 +7,15 @@ This application provides a flexible endpoint for creating or updating reservati
 ### Models
   
 #### Guest
+```
   first_name:string
   last_name:string
   phone_numbers:string[]
   email:string
+```
   
 #### Reservation
+```
   code:string
   start_date:date
   end_date:date
@@ -27,11 +30,14 @@ This application provides a flexible endpoint for creating or updating reservati
   security_price:money
   total_price:money
   guest:references
+```
 
 
 #### PayloadFormat
+```
   schema:json
   provider:string
+```
 
 ### Services
 `ReservationServices::ProcessPayload.call(payload:)`
