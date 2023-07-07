@@ -9,4 +9,3 @@ class FailedServiceError < StandardError
     @payload = payload
   end
 end
-
