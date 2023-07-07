@@ -7,35 +7,35 @@ This application provides a flexible endpoint for creating or updating reservati
 ### Models
   
 #### Guest
-	first_name:string
-	last_name:string
-	phone_numbers:string[]
-	email:string
+  first_name:string
+  last_name:string
+  phone_numbers:string[]
+  email:string
   
 #### Reservation
   code:string
   start_date:date
-  end_at:date
+  end_date:date
   nights_count:integer
-	total_guests_count:integer
-	adults_count:integer
-	children_count:integer
-	infants_count:integer
-	status:string
-	host_currency:string
-	payout_price:money
-	security_price:money
-	total_price:money
-	guest:references
+  total_guests_count:integer
+  adults_count:integer
+  children_count:integer
+  infants_count:integer
+  status:string
+  host_currency:string
+  payout_price:money
+  security_price:money
+  total_price:money
+  guest:references
 
 
 #### PayloadFormat
-	schema:json
-	provider:string
+  schema:json
+  provider:string
 
 ### Services
-`ReservationServices::Format.call(payload_format: nil, payload:)`
-	If payload_format is nil, it will iterate all payload formats available in priority order and return the first valid payload schema.
+`ReservationServices::ProcessPayload.call(payload:)`
+This service is the core of this app, which handles the format checking and resource handling.
 	
 ---
 
@@ -43,6 +43,7 @@ This application provides a flexible endpoint for creating or updating reservati
   1. All values will be converted into their respective attribute type. Further improvements for specificity can be done.
   2. All money values will be converted into a money type to avoid float computation errors.
   3. All included payload formats have unique structure
+  4. All fields from payload format schema is required
 
 #### Potential Additions
   1. String regex validation
@@ -60,7 +61,6 @@ This application provides a flexible endpoint for creating or updating reservati
     "<payload_key_nested_with_dots>": "<model.attribute>"
   }
 ```
-
 
 #### Samples:
 **Payload #1**
@@ -112,10 +112,7 @@ This application provides a flexible endpoint for creating or updating reservati
 ## Setup
 ```shell
   # Install Ruby Version
-  rbenv install 3.1.0
-
-  # Install ruby on rails system dependencies
-  nvm etc.
+  rbenv install 3.1.3
 
   # Bundle gemfile
   bundle install
@@ -127,10 +124,6 @@ This application provides a flexible endpoint for creating or updating reservati
   bundle exec rails s -p 3000
 
   # Server should be running at port 3000
-```
-
-```shell
-  `Setup Docker if enough time
 ```
 
 > Note: Aside from the default rails 7 api only gems, money-rails, rubocop, and rspec are included in the Gemfile. 
@@ -182,18 +175,4 @@ This application provides a flexible endpoint for creating or updating reservati
 ```
 ---
 
-## Test Cases
-1. Happy path for both samples
-2. Invalid field type
-3. No matching format
-4. Missing required field (email, reservation code)
-5. E2E one failure, one success
-
-TODO:
-- [X] Create Rails API only app
-- [ ] Create models
-- [ ] Create format service
-- [ ] Create tests for format service
-- [ ] Create tests for model validations
-- [ ] Create tests for E2E
 
